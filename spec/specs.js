@@ -5,5 +5,13 @@ describe("Hangman", function(){
     expect(currentGame.listOfWords).to.eql(["Apple", "Banana", "Water Melon", "Orange", "Pear", "Grapes", "Strawberries", "Kiwi", "Tomato"]);
     expect(currentGame.wordToGuess).to.equal("");
     expect(currentGame.usedLetters).to.eql([]);
+    expect(currentGame.userGuess).to.eql([]);
+    expect(currentGame.wrongAnswerCount).to.equal(0);
+  });
+});
+describe("wordChooser", function() {
+  it("Will choose a word from a list at random", function() {
+    var currentGame = new Hangman();
+    expect(currentGame.wordChooser()).to.equal(true);
   });
 });
