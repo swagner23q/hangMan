@@ -11,10 +11,28 @@ describe("Hangman", function(){
 });
 
 describe("wordChooser", function() {
-    it("Will choose a word from a list at random", function() {
+    it("Will choose a word from a list at random, and pass when random word matches equal value and fail if not matched (the code functions properly with random aspect)", function() {
     var currentGame = new Hangman();
-    expect(currentGame.wordChooser()).to.equal(true);
+    expect(currentGame.wordChooser()).to.equal("Apple");
   });
-
   //Spec should be written for adding the correct amount of blanks to
 });
+
+describe("blankCreator", function(){
+  it("Will push enough blanks into the userGuess property equal to the length of the wordToGuess, and pass when random word matches equal value and fail if not matched (the code functions properly with random aspect)", function(){
+    var currentGame = new Hangman();
+    currentGame.wordChooser();
+    expect(currentGame.blankCreator()).to.eql(["_","_","_","_","_"]);
+  });
+});
+
+
+
+// describe("drawBodyPart", function() {
+//   it("Will set the correct body part image according to the wrongAnswerCount", function() {
+//     var currentGame = new Hangman();
+//     currentGame.wrongAnswerCount = 1;
+//     expect(drawBodyPart
+//
+//     )};
+// });

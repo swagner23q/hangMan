@@ -8,31 +8,12 @@ var Hangman = function(){
 };
 
 Hangman.prototype.wordChooser = function() {
-  var chooseRandomNumber = Math.random();
-  var wordChoice = "";
-  if (chooseRandomNumber > .9) {
-     wordChoice = currentGame.listOfWords[9];
-   } else if (chooseRandomNumber > .8) {
-      wordChoice = currentGame.listOfWords[8];
-   } else if (chooseRandomNumber > .7) {
-       wordChoice = currentGame.listOfWords[7];
-   } else if (chooseRandomNumber > .6) {
-       wordChoice = currentGame.listOfWords[6];
-   } else if (chooseRandomNumber > .5) {
-        wordChoice = currentGame.listOfWords[5];
-   } else if (chooseRandomNumber > .4) {
-        wordChoice = currentGame.listOfWords[4];
-   } else if (chooseRandomNumber > .3) {
-        wordChoice = currentGame.listOfWords[3];
-   } else if (chooseRandomNumber > .2) {
-        wordChoice = currentGame.listOfWords[2];
-   } else if (chooseRandomNumber > .1) {
-        wordChoice = currentGame.listOfWords[1];
-   } else if (chooseRandomNumber < .1) {
-       wordChoice = currentGame.listOfWords[0];
-     }
-     currentGame.wordToGuess = wordChoice.split("");
-     for(i = 0; i < currentGame.wordToGuess.length; i++){
-       currentGame.userGuess.push("_");
-     }
-   }
+  var word = this.listOfWords[Math.floor(Math.random() * this.listOfWords.length)];
+  return this.wordToGuess = word;
+}
+
+Hangman.prototype.blankCreator = function () {
+  for (var i = 0; i < this.wordToGuess.length; i++) {
+    this.userGuess.push("_");
+  } return this.userGuess;
+};
