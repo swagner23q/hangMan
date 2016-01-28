@@ -10,8 +10,6 @@ $(function(){
 
     $('#availableLetterSpace').on('click', 'li', function(){
       var clickedLetter = $(this).text();
-      // currentGame.currentLetter = clickedLetter;
-      console.log(clickedLetter);
       currentGame.runHangman(clickedLetter);
     });
   });
@@ -24,7 +22,6 @@ var Hangman = function(){
   this.wordToGuess = "";
   this.guessedLetters = [];
   this.userGuess = [];
-  this.currentLetter = "";
   this.wrongAnswerCount = 0;
 };
 
