@@ -74,5 +74,10 @@ Hangman.prototype.moveToGuessed = function (currentLetter) {
 
 Hangman.prototype.displayAvailableLetters = function () {
   $('#availableLetterSpace').first("ul").empty();
-  this.availableLetters.forEach(function(i){$("#availableLetterSpace").first("ul").append("<li>" +i + "</li>")}); 
+  this.availableLetters.forEach(function(i){$("#availableLetterSpace").first("ul").append("<li>" +i + "</li>")});
+};
+
+Hangman.prototype.displayGuessedLetters = function () {
+  $('#gusssedLetterSpace').first("ul").empty();
+  this.guessedLetters.forEach(function(i){$("#guessedLetterSpace").first("ul").append("<li>" +i + "</li>")});
 };
