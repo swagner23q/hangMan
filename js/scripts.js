@@ -1,3 +1,14 @@
+$(function(){
+  $('#newGameButton').click(function(){
+    $('#platformSpace').empty();
+    $('#platformSpace').append("<img src='images/hangman0.png'>");
+    var currentGame = new Hangman();
+    currentGame.wordChooser();
+    currentGame.blankCreator();
+  });
+});
+
+
 var Hangman = function(){
   this.availableLetters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
   this.listOfWords = ["apple", "banana", "watermelon", "orange", "pear", "grapes", "strawberries", "kiwi", "tomato", "date"];
@@ -19,20 +30,17 @@ Hangman.prototype.blankCreator = function () {
   } return this.userGuess;
 };
 
-
-
-
-
 Hangman.prototype.chooseNewLetter = function (currentLetter) {
   if(this.checkLetter(currentLetter)){
     this.replaceBlanks(currentLetter);
   } else {
     this.increaseWrongAnswerCount();
+    $('#platformSpace').empty();
+    $('#platformSpace').append("<img src='images/hangman"+this.wrongAnswerCount+".png'>")
   }
    this.moveToGuessed(currentLetter);
 
-   if(this.wrongAnswerCount === 7){
-     alert("You Lost!");
+   if(this.wrongAnswerCount === 6){
    } else if (this.userGuess.join("") === this.wordToGuess.join("")){
      alert("You won!");
    }
@@ -62,4 +70,9 @@ Hangman.prototype.moveToGuessed = function (currentLetter) {
   this.availableLetters.splice(i,1);
   this.guessedLetters.push(currentLetter);
   return this.guessedLetters;
+};
+
+Hangman.prototype.displayAvailableLetters = function () {
+  $('#availableLetterSpace').first("ul").empty();
+  this.availableLetters.forEach(function(i){$("#availableLetterSpace").first("ul").append("<li>" +i + "</li>")}); 
 };

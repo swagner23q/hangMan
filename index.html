@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title></title>
+    <title>Let's Play Hangman</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/styles.css">
@@ -12,6 +12,53 @@
     <script src="js/scripts.js"></script>
   </head>
   <body>
+    <div class='container'>
+    <header class="row">
+      <div class='col-md-12'>
+        <h2>Let's Play Hangman</h2>
+      </div>
+    </header>
+    <div class="row">
+      <div class="col-md-8" id="platformContainer">
+        <p><button type="button" class="btn btn-success" id="newGameButton">New Game</button></p>
+        <div id="platformSpace">
+          <img src="images/hangman0.png">
+        </div>
+        <div id="outComeSpace">
+        </div>
+      </div>
+      <div class="col-md-4" id="guessedLetterContainer">
+        <div id="guessedLetterSpace">
+        </div>
+      </div>
+    </div>
+    <div class='row'>
+      <div class="col-md-7" id="blankContainer">
+        <div id="blankSpace">
 
+        </div>
+      </div>
+      <div class='col-md-1' id='guessWordContainer'>
+        <button type="button" class="btn btn-default">Guess the Word</button>
+      </div>
+      <div class='col-md-4' id='chancesLeftContainer'>
+      </div>
+    </div>
+    <div class='row'>
+      <div class="col-md-8">
+        <div id="availableLetterSpace">
+        <h4>Choose a Letter</h4>
+          <ul>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-4">
+      </div>
+    </div>
+    <footer class="row">
+      <div class="col-md-12">
+      </div>
+    </footer>
+  </div>
   </body>
 </html>
