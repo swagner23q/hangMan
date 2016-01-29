@@ -1,31 +1,3 @@
-$(function(){
-  var currentGame = new Hangman();
-  // currentGame.wordChooser();
-  // currentGame.blankCreator();
-  // currentGame.displayAvailableLetters();
-  // currentGame.displayUserGuess();
-
-  $('#newGameButton').click(function(){
-    $('#platformSpace').empty();
-    $('#platformSpace').append("<img src='images/hangman0.png'>");
-    $('#guessedLetterSpace').find('ul').empty();
-    $('#availableLetterSpace').find('ul').empty();
-    $('#userGuessSpace').find('ul').empty();
-    currentGame.availableLetters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-    currentGame.wordChooser();
-    currentGame.blankCreator();
-    currentGame.guessedLetters = [];
-    currentGame.wrongAnswerCount= 0;
-    currentGame.displayAvailableLetters();
-    currentGame.displayUserGuess();
-    $('#availableLetterSpace').on('click', 'li', function(){
-      var selectedLetter = $(this).text();
-      currentGame.runHangman(selectedLetter);
-    });
-  });
-
-});
-
 var Hangman = function(){
   this.availableLetters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
   this.listOfWords = ["apple", "banana", "watermelon", "orange", "pear", "grapes", "strawberries", "kiwi", "tomato", "date"];
@@ -34,7 +6,6 @@ var Hangman = function(){
   this.userGuess = [];
   this.wrongAnswerCount = 0;
 };
-
 
 Hangman.prototype.wordChooser = function() {
   var word = this.listOfWords[Math.floor(Math.random() * this.listOfWords.length)];
@@ -54,6 +25,7 @@ Hangman.prototype.displayAvailableLetters = function () {
 };
 
 Hangman.prototype.displayGuessedLetters = function () {
+  console.log(this.guessedLetters);
   $('#guessedLetterSpace').find("ul").empty();
   this.guessedLetters.forEach(function(i){$("#guessedLetterSpace").find("ul").append("<li>" +i + "</li>")});
 };
@@ -110,5 +82,32 @@ Hangman.prototype.moveToGuessed = function (currentLetter) {
   var i = this.availableLetters.indexOf(currentLetter);
   this.availableLetters.splice(i,1);
   this.guessedLetters.push(currentLetter);
+  console.log("ran through moveToGuessed");
   return this.guessedLetters;
 };
+
+$(function(){
+var currentGame = new Hangman();
+
+  $('#newGameButton').click(function(){
+    $('#platformSpace').empty();
+    $('#platformSpace').append("<img src='images/hangman0.png'>");
+    $('#guessedLetterSpace').find('ul').empty();
+    $('#availableLetterSpace').find('ul').empty();
+    $('#userGuessSpace').find('ul').empty();
+    $('#outComeSpace').empty();
+    currentGame.availableLetters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+    currentGame.wordChooser();
+    currentGame.blankCreator();
+    currentGame.guessedLetters = [];
+    currentGame.wrongAnswerCount= 0;
+    currentGame.displayAvailableLetters();
+    currentGame.displayUserGuess();
+  });
+
+  $('#availableLetterSpace').on('click', 'li', function(){
+    var selectedLetter = $(this).text();
+    currentGame.runHangman(selectedLetter);
+  });
+
+});
